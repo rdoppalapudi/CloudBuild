@@ -1,0 +1,4 @@
+192.168.33.11 cloudbuild-master-1.cloud.net cloudbuild-master-1
+192.168.33.12 cloudbuild-slave-1.cloud.net cloudbuild-slave-1
+192.168.33.13 cloudbuild-slave-2.cloud.net cloudbuild-slave-2
+192.168.33.14 cloudbuild-slave-3.cloud.net cloudbuild-slave-3
