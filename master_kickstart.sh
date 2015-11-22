@@ -18,8 +18,11 @@ sudo puppet resource package puppet-server ensure=latest
 cp /etc/share/vm/puppet.conf /etc/puppet/
 rm -rf /etc/puppet/manifests
 ln -s /etc/share/vm/manifests /etc/puppet/manifests
+ln -s /etc/share/vm/modules /etc/puppet/modules
+
+ln -s /etc/share/vm/puppet-hiera-enc /etc/puppet/puppet-hiera-enc
 #start 
-sudo puppet master --verbose --daemonize
+sudo puppet master --verbose --daemonize --logdest /var/log/puppet/master.log
 #install puppet module for tomcat
 puppet module install puppetlabs-tomcat
 puppet module install puppetlabs-java

@@ -1,0 +1,3 @@
+---
+environment: 'production' # Puppet default environment
+classes : 'app::router'
