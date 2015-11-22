@@ -12,3 +12,6 @@ sudo su - vagrant
 cp /etc/share/vm/hosts /etc/
 jdk_home=$(dirname $(dirname $(readlink -f $(which java))))
 export JAVA_HOME=$jdk_home 
+sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+sudo yum install puppet -y
+puppet agent --server cloudbuild-master-1.cloud.net -t --debug
