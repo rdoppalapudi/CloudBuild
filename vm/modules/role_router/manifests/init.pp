@@ -53,4 +53,23 @@ tomcat::instance { 'test':
 tomcat::service { 'default': }
 
 
+
+class {'nexus':
+    url      => "https://oss.sonatype.org/",
+}
+
+
+nexus::artifact {'spring-example':
+    gav        => "com.cloudseal.client:spring-example:1.2.7",
+    repository => "public",
+    packaging => 'war',
+    output     => "/tmp/spring-example-1.2.7.war",
+    ensure     => present
+}->
+tomcat::war { 'spring-example.war':
+  catalina_base => '/opt/apache-tomcat/',
+  war_source => 'tmp/spring-example-1.2.7.war',
+}
+
+
 }
