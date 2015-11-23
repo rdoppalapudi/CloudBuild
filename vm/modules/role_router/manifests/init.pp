@@ -45,7 +45,12 @@ class role_router {
   }
 
 class { 'tomcat': }
-class { 'java': }
+
+class { 'java':
+  distribution          => "jdk",
+  package               =>  "java-1.8.0-openjdk",
+  version               =>  "installed"
+ }
 
 tomcat::instance { 'test':
   source_url => 'http://mirror.nexcess.net/apache/tomcat/tomcat-8/v8.0.28/bin/apache-tomcat-8.0.28.tar.gz'
@@ -61,14 +66,14 @@ class {'nexus':
 
 nexus::artifact {'spring-example':
     gav        => "com.cloudseal.client:spring-example:1.2.7",
-    repository => "public",
-    packaging => 'war',
+    repository => "public"
+,    packaging => 'war',
     output     => "/tmp/spring-example-1.2.7.war",
     ensure     => present
 }->
 tomcat::war { 'spring-example.war':
   catalina_base => '/opt/apache-tomcat/',
-  war_source => 'tmp/spring-example-1.2.7.war',
+  war_source => '/tmp/spring-example-1.2.7.war',
 }
 
 
