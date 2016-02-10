@@ -1,1 +1,1 @@
-CloudBuild
+CloudBuild puppetmaster and puppetsalves

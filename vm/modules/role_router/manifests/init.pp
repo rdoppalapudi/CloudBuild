@@ -48,7 +48,7 @@ class { 'tomcat': }
 
 class { 'java':
   distribution          => "jdk",
-  package               =>  "java-1.8.0-openjdk",
+  package               =>  "java-1.8.0-openjdk-devel",
   version               =>  "installed"
  }
 
@@ -74,6 +74,21 @@ nexus::artifact {'spring-example':
 tomcat::war { 'spring-example.war':
   catalina_base => '/opt/apache-tomcat/',
   war_source => '/tmp/spring-example-1.2.7.war',
+}
+
+class { "maven::maven":
+    version => "3.2.5", # version to install
+    # you can get Maven tarball from a Maven repository instead than from Apache servers, optionally with a user/password
+   
+  }-> 
+ maven { "/tmp/web-1.0.0-20151129.055956-1.war":
+  groupid    => "com.example",
+  artifactid => "web",
+  version    => "1.0.0-SNAPSHOT",
+  packaging => "war",
+  repos => "https://s3.amazonaws.com/cloudack/snapshot"
+ 
+
 }
 
 

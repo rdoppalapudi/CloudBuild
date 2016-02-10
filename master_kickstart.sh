@@ -21,4 +21,4 @@ sudo puppet master --verbose --daemonize --logdest /var/log/puppet/master.log
 #install puppet module for tomcat
 puppet module install puppetlabs-tomcat
 puppet module install puppetlabs-java
-
+puppet module install maestrodev-maven
