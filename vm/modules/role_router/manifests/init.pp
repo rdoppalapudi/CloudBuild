@@ -36,6 +36,15 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 class role_router {
+  
+  $key1= hiera("key1") 
+
+  file { '/etc/abc.xml':
+    content => template('role_router/abc.xml.erb'),
+    owner   => root,
+    group   => root,
+    mode    => 644,
+  }
 
   file { '/var/log/router-log':
     ensure => 'directory',
@@ -53,7 +62,7 @@ class { 'java':
  }
 
 tomcat::instance { 'test':
-  source_url => 'http://mirror.nexcess.net/apache/tomcat/tomcat-8/v8.0.28/bin/apache-tomcat-8.0.28.tar.gz'
+  source_url => 'http://supergsego.com/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz'
 }->
 tomcat::service { 'default': }
 
@@ -92,4 +101,8 @@ class { "maven::maven":
 }
 
 
+}
+
+class custom_env{
+  
 }

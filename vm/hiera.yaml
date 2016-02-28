@@ -1,0 +1,8 @@
+---
+:backend: - yaml
+:hierarchy:
+    - "%{::key_env}"
+    - common
+
+:yaml:
+    :datadir: /etc/puppet/hieradata/

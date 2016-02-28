@@ -11,4 +11,5 @@ sudo su - vagrant
 cp /etc/share/vm/hosts /etc/
 sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 sudo yum install puppet -y
+export FACTER_key_env=dev
 puppet agent --server cloudbuild-master-1.cloud.net -t --debug

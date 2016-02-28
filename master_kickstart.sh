@@ -11,6 +11,7 @@ sudo su - vagrant
 cp /etc/share/vm/hosts /etc/
 sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 sudo yum install puppet-server -y
+sudo yum install hiera-puppet
 sudo puppet resource package puppet-server ensure=latest
 cp /etc/share/vm/puppet.conf /etc/puppet/
 rm -rf /etc/puppet/manifests
